@@ -55,7 +55,7 @@ ROOT_URLCONF = 'studyportal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['studyportal/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

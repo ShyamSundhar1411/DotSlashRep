@@ -17,19 +17,6 @@
     <link rel = "stylesheet" href = "{% static 'css/styles.css' %}" />
     <title>Student Study Portal</title>
   </head>
-  <style>
-    body{
-  overflow: hidden;
-  background-image: url("/static/background.png");
-  background-repeat:no-repeat;
-  background-size:cover; 
-}
-.footer-text{
-  text-decoration:none;
-  color:white;
-}
-
-  </style>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -71,7 +58,7 @@
     <footer class="text-muted">
       <div class="container text-center">
         <p class='text-body'>
-          <a href = "{% url 'portal' %}" class = 'footer-text'>Made By - Error 404</a>
+          <a href = "{% url 'portal' %}" class = 'text-muted footer-text'>Made By - Error 404</a>
         </div>
       </div>
     </footer>

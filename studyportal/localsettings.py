@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import environ
-import dj_database_url
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -28,7 +27,7 @@ SECRET_KEY = env.str('SECRET_KEY', default='ThisIsAWeakSauceSecretKey')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -51,8 +50,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'cloudinary_storage',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'studyportal.urls'
@@ -91,7 +87,10 @@ WSGI_APPLICATION = 'studyportal.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -201,10 +200,3 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
  }
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env.str('CLOUD_NAME'),
-    'API_KEY': env.str('API_KEY'),
-    'API_SECRET': env.str('API_SECRET')
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

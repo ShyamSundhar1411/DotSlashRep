@@ -33,14 +33,19 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    
+                    {% if user.profile.avatar %}
+                    <img src="{{user.profile.avatar.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    {% else %}
+                    <img src="{% static 'default.png' %}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    {% endif %}
+                    {{user.username}}
                   </a>
                   <ul class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="far fa-user-circle"></i> My Account</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-book-open"></i> View All Notes</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-tasks"></i> View All ToDos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'profile' user.profile.slug %}"><i class="far fa-user-circle"></i> My Account</a></li>
+                    <li><a class="dropdown-item" href="{% url 'view_all_notes' %}"><i class="fas fa-book-open"></i> View All Notes</a></li>
+                    <li><a class="dropdown-item" href="{% url 'view_all_todos' %}"><i class="fas fa-tasks"></i> View All ToDos</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
                   </ul>
                 </li>
               {% endif %}

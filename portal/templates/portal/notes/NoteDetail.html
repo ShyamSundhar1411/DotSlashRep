@@ -9,8 +9,8 @@
               Generate PDF
             </a>
             <ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Download</a></li>
-                <li><a class="dropdown-item" href="#">Send Mail</a></li>
+                <li><a class="dropdown-item" href="{% url 'render_to_pdf_and_download' note.id note.slug %}">Download</a></li>
+                <li><a class="dropdown-item" href="{% url 'render_to_pdf_and_mail' note.id note.slug %}">Send Mail</a></li>
             </ul>
         </div>
     </div>

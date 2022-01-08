@@ -78,6 +78,7 @@ class NoteDeleteView(LoginRequiredMixin,generic.DeleteView):
         return note
     def get_success_url(self):
         note = super(NoteDeleteView,self).get_object()
+        render_pdf_send_mail_on_delete(self.request,note.id)
         return reverse('view_all_notes')
 #Function Based Views
 def home(request):

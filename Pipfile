@@ -8,6 +8,9 @@ django = "==3.2.10"
 pillow = "*"
 django-autoslug = "*"
 django-crispy-forms = "*"
+django-tinymce = "*"
+environ = "*"
+django-environ = "*"
 
 [dev-packages]
 

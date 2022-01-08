@@ -21,7 +21,8 @@ from portal import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name = "home"),
-    path('portal/',include("portal.urls"))
+    path('portal/',include("portal.urls")),
+    path('tinymce/', include('tinymce.urls')),
 ]
 urlpatterns+=static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)
 urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

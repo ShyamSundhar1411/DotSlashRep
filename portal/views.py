@@ -104,6 +104,7 @@ def deletetodo(request,pk,slug):
         messages.success(request,"ToDo Deleted Sucessfully")
         return redirect('view_all_todos')
 #Notes
+@login_required
 def notes(request):
     note = Note.objects.filter(user = request.user).order_by('-updated_on')
     page = request.GET.get('page', 1)
@@ -163,6 +164,7 @@ def render_pdf_send_mail_on_delete(request,pk):
     filename = str(note.title)+'(BackUp).pdf'
     send_requested_pdf_on_delete(filename,pdf,request.user.id)
     messages.info(request,"Deletion Successful.A backup of this note has been sent to the registered email.")
+@login_required
 def dictionary(request):
     form = SearchForm()
     if request.method == "POST":
@@ -194,6 +196,8 @@ def dictionary(request):
         return render(request,'portal/dictionary.html',context)
     else:
         return render(request,'portal/dictionary.html',{'form':form})
+    
+@login_required
 def books(request):
     form = SearchForm()
     if request.method == "POST":
@@ -228,6 +232,7 @@ def books(request):
     else:
         return render(request,'portal/books.html',{"form":form})
 @xframe_options_exempt
+@login_required
 def youtube(request):
     form = SearchForm()
     if request.method == "POST":
@@ -251,6 +256,7 @@ def youtube(request):
         return render(request,'portal/youtube.html',context)
     else:
         return render(request,'portal/youtube.html',{"form":form})
+@login_required
 def wiki(request):
     form = SearchForm()
     if request.method == "POST":
@@ -291,4 +297,5 @@ def profile(request,slug):
         user_form = UserForm(instance = request.user)
         profile_form = ProfileForm(instance = request.user.profile)
         return render(request,'account/profile.html',{'user_form':user_form,'profile_form':profile_form})
-
+def about(request):
+    return render(request,'portal/about.html')

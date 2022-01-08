@@ -8,19 +8,13 @@
     font-family: "glacial indifference";
 
 }
-body{
-    display: flex;
-    background-image: url(./assets/bg4.jpg);
-    background-repeat: no-repeat;
-    background-size:1800px 1500px;
-    position:relative;
-}
 .name{
-    font-family: "Playlist";
-    color:rgb(0, 0, 0);
-    font-size:50px;
-    padding:0px;
-    text-shadow: 5px 2px rgb(47, 163, 52);
+    font-family: "glacial indifference";
+    color:white;
+    font-size:25px;
+    padding-top:50px;
+    padding-left:30px;
+    margin-left:5px;
 }
 ul {
     list-style-type: none;

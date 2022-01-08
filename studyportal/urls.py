@@ -24,7 +24,8 @@ urlpatterns = [
     path('portal/',include("portal.urls")),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/',include("allauth.urls")),
-    path('profile/<slug:slug>/',views.profile,name = "profile")
+    path('profile/<slug:slug>/',views.profile,name = "profile"),
+    path('about',views.about,name = "about")
 ]
 urlpatterns+=static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)
 urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
